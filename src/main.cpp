@@ -51,9 +51,9 @@ bool fTxIndex = false;
 unsigned int nCoinCacheSize = 5000;
 
 /** Fees smaller than this (in satoshi) are considered zero fee (for transaction creation) */
-int64 CTransaction::nMinTxFee = 100000;
+int64 CTransaction::nMinTxFee = 11337;
 /** Fees smaller than this (in satoshi) are considered zero fee (for relaying) */
-int64 CTransaction::nMinRelayTxFee = 100000;
+int64 CTransaction::nMinRelayTxFee = 11337;
 
 CMedianFilter<int> cPeerBlockCounts(8, 0); // Amount of blocks that other nodes claim to have
 
@@ -1124,6 +1124,30 @@ int64 static GetBlockValue(int nHeight, int64 nFees, uint256 prevHash)
     else if(nHeight < 750000)
     {
         nSubsidy = 6250 * COIN;
+    }
+    else if(nHeight < 779333)
+    {
+        nSubsidy = 25000 * COIN;
+    }
+    else if(nHeight < 789555)
+    {
+        nSubsidy = 12500 * COIN;
+    }
+    else if(nHeight < 822222)
+    {
+        nSubsidy = 50000 * COIN;
+    }
+    else if(nHeight < 833333)
+    {
+        nSubsidy = 12500 * COIN;
+    }
+    else if(nHeight < 888888)
+    {
+        nSubsidy = 100000 * COIN;
+    }
+    else if(nHeight < 900001)
+    {
+        nSubsidy = 12500 * COIN;
     }
     return nSubsidy + nFees;
 }
